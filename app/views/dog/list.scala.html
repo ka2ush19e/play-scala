@@ -1,0 +1,22 @@
+@(dogs: List[Dog])(implicit messages: Messages)
+@main("Dog List") {
+    <h1>Dog List</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>favorite_food</th>
+            </tr>
+        </thead>
+        <tbody>
+            @dogs.map { dog =>
+                <tr>
+                    <td>@dog.id</td>
+                    <td>@dog.name</td>
+                    <td>@dog.favoriteFood</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
