@@ -1,0 +1,13 @@
+@(userForm: Form[User])(implicit messages: Messages)
+@main("Entry User") {
+    <h1>Entry User</h1>
+    @helper.form(routes.UserController.entrySubmit) {
+        <fieldset>
+            <legend>input user info.</legend>
+            @helper.inputText(userForm("name"))
+            @helper.inputText(userForm("email"))
+            @helper.inputText(userForm("age"))
+        </fieldset>
+        <input type="submit" value="entry">
+    }
+}

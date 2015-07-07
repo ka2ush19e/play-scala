@@ -1,0 +1,6 @@
+@(message: String, fruits: List[String])
+@import tags.iterateTag
+@main("Show Scala Templates") {
+    <h1>@message</h1>
+    @iterateTag(fruits)
+}
