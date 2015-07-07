@@ -1,20 +1,27 @@
-@(dogs: List[Dog])(implicit messages: Messages)
+@(dogs: List[Dog])
 @main("Dog List") {
     <h1>Dog List</h1>
+    <input type="button" value="Create" onClick="location.href='@routes.DogController.entry()'">
     <table border="1">
         <thead>
             <tr>
                 <th>id</th>
                 <th>name</th>
                 <th>favorite_food</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             @dogs.map { dog =>
                 <tr>
                     <td>@dog.id</td>
-                    <td>@dog.name</td>
+                    <td><a href="@routes.DogController.entry(dog.id)">@dog.name</a></td>
                     <td>@dog.favoriteFood</td>
+                    <td>
+                        @helper.form(routes.DogController.delete(dog.id.get)) {
+                            <input type="submit" value="Delete">
+                        }
+                    </td>
                 </tr>
             }
         </tbody>

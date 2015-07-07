@@ -1,0 +1,15 @@
+@(dogForm: Form[controllers.DogController.DogForm])(implicit messages: Messages)
+@main("Dog Entry") {
+    <h1>Dog Entry</h1>
+    @helper.form(dogForm("id").value.map(_ => routes.DogController.update).getOrElse(routes.DogController.create)) {
+        <fieldset>
+            <legend>input dog info.</legend>
+            @dogForm("id").value.map { id =>
+                <input type="hidden" name="id" value="@id"/>
+            }
+            @helper.inputText(dogForm("name"))
+            @helper.inputText(dogForm("favorite_food"))
+        </fieldset>
+        <input type="submit" value='@dogForm("id").value.map(_ => "Update").getOrElse("Create")'>
+    }
+}

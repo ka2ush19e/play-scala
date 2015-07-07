@@ -29,6 +29,10 @@ GET         /user/entry                 controllers.UserController.entryInit
 POST        /user/entry                 controllers.UserController.entrySubmit
 
 GET         /dog                        controllers.DogController.list
+GET         /dog/entry                  controllers.DogController.entry(id: Option[Int] ?= None)
+POST        /dog/create                 controllers.DogController.create
+POST        /dog/update                 controllers.DogController.update
+POST        /dog/delete/:id             controllers.DogController.delete(id: Int)
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
