@@ -5,13 +5,15 @@ import play.api.mvc._
 
 class SampleController extends Controller {
 
-  def sample1 = Action {
+  def sample1 = Action { implicit request =>
+    println(s"acceptLanguages: ${request.acceptLanguages}")
+    println(s"acceptedTypes: ${request.acceptedTypes}")
     Ok(views.html.index("SampleController#sample1"))
   }
 
   def sample2 = Action {
     Result(
-      ResponseHeader(200, Map(CONTENT_TYPE -> "text/html")),
+      ResponseHeader(200, Map(CONTENT_TYPE -> "text/plain")),
       Enumerator("Sample2".getBytes)
     )
   }
@@ -48,5 +50,17 @@ class SampleController extends Controller {
 
   def sample11(optValue: Option[String]) = Action {
     Ok(views.html.index(s"optValue: $optValue"))
+  }
+
+  def sample12 = Action {
+    InternalServerError("Internal Server Error")
+  }
+
+  def sample13 = Action {
+    Ok(views.html.index("set color and food")).withCookies(Cookie("color", "Red"), Cookie("food", "Meat"))
+  }
+
+  def sample14 = Action {
+    Ok(views.html.index("remove color")).discardingCookies(DiscardingCookie("color"))
   }
 }

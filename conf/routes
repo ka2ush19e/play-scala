@@ -3,41 +3,52 @@
 # ~~~~
 
 # Home page
-GET         /                           controllers.Application.index
-GET         /sample1                    controllers.SampleController.sample1
-GET         /sample2                    controllers.SampleController.sample2
-GET         /sample3                    controllers.SampleController.sample3
-GET         /sample4                    controllers.SampleController.sample4
-GET         /sample5/:id                controllers.SampleController.sample5(id: Long)
-GET         /sample6                    controllers.SampleController.sample6(id: Long)
-GET         /sample7/*path              controllers.SampleController.sample7(path)
-GET         /sample8/$id<[0-9]+>        controllers.SampleController.sample8(id: Long)
-GET         /sample9                    controllers.SampleController.sample9(fixedValue="fixed")
-GET         /sample10                   controllers.SampleController.sample10(defaultValue: Int ?= 1)
-GET         /sample11                   controllers.SampleController.sample11(optValue: Option[String])
+GET         /                            controllers.Application.index
+GET         /sample1                     controllers.SampleController.sample1
+GET         /sample2                     controllers.SampleController.sample2
+GET         /sample3                     controllers.SampleController.sample3
+GET         /sample4                     controllers.SampleController.sample4
+GET         /sample5/:id                 controllers.SampleController.sample5(id: Long)
+GET         /sample6                     controllers.SampleController.sample6(id: Long)
+GET         /sample7/*path               controllers.SampleController.sample7(path)
+GET         /sample8/$id<[0-9]+>         controllers.SampleController.sample8(id: Long)
+GET         /sample9                     controllers.SampleController.sample9(fixedValue="fixed")
+GET         /sample10                    controllers.SampleController.sample10(defaultValue: Int ?= 1)
+GET         /sample11                    controllers.SampleController.sample11(optValue: Option[String])
+GET         /sample12                    controllers.SampleController.sample12
+GET         /sample13                    controllers.SampleController.sample13
+GET         /sample14                    controllers.SampleController.sample14
 
-GET         /getSession                 controllers.SessionController.getSession
-GET         /setSession                 controllers.SessionController.setSession
-GET         /removeSession              controllers.SessionController.removeSession
+GET         /session/get                 controllers.SessionController.getSession
+GET         /session/set                 controllers.SessionController.setSession
+GET         /session/remove              controllers.SessionController.removeSession
 
-GET         /setFlash                   controllers.SessionController.setFlash
-GET         /getFlash                   controllers.SessionController.getFlash
+GET         /flash/set                   controllers.SessionController.setFlash
+GET         /flash/get                   controllers.SessionController.getFlash
 
-GET         /show                       controllers.TemplateController.show
+GET         /show                        controllers.TemplateController.show
 
-GET         /user/entry                 controllers.UserController.entryInit
-POST        /user/entry                 controllers.UserController.entrySubmit
+GET         /user/entry                  controllers.UserController.entryInit
+POST        /user/entry                  controllers.UserController.entrySubmit
 
-GET         /dog                        controllers.DogController.list
-GET         /dog/entry                  controllers.DogController.entry(id: Option[Int] ?= None)
-POST        /dog/create                 controllers.DogController.create
-POST        /dog/update                 controllers.DogController.update
-POST        /dog/delete/:id             controllers.DogController.delete(id: Int)
+GET         /dog                         controllers.DogController.list
+GET         /dog/entry                   controllers.DogController.entry(id: Option[Int] ?= None)
+POST        /dog/create                  controllers.DogController.create
+POST        /dog/update                  controllers.DogController.update
+POST        /dog/delete/:id              controllers.DogController.delete(id: Int)
 
-GET         /json/sample1               controllers.JsonController.sample1
-GET         /json/sample2               controllers.JsonController.sample2
+GET         /json/sample1                controllers.JsonController.sample1
+GET         /json/sample2                controllers.JsonController.sample2
 
-GET         /async/sample1              controllers.AsyncController.sample1
+GET         /async/ws                    controllers.AsyncController.ws
+GET         /async/timeout               controllers.AsyncController.timeout
+GET         /async/download              controllers.AsyncController.download
+GET         /async/sendFile1             controllers.AsyncController.sendFile1
+GET         /async/sendFile2             controllers.AsyncController.sendFile2
+GET         /async/sendFile3             controllers.AsyncController.sendFile3
+
+GET         /customaction/sample1        controllers.CustomActionController.sample1
+GET         /customaction/sample2        controllers.CustomActionController.sample2
 
 # Map static resources from the /public folder to the /assets URL path
-GET         /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+GET         /assets/*file                controllers.Assets.versioned(path="/public", file: Asset)
